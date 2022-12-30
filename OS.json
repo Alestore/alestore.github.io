@@ -1,0 +1,16 @@
+{
+  "extensionName": "Sistema operativo",
+  "extensionPort": "sistema_operativo",
+  "blocks": [
+    {
+      "opcode": "sistema_operativo",
+      "text": "sistema operativo",
+      "arguments": {
+      },
+      "func": "sistemaOperativo"
+    }
+  ],
+  "menus": {
+  },
+  "url": "https://alestore.github.io/OS.js"
+}
