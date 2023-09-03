@@ -24,4 +24,4 @@ class Language {
   }
 }
 
-Scratch.extensions.register(new HelloWorld());
+Scratch.extensions.register(new Language());
