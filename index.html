@@ -1,20 +1,90 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alestore Games</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f4f4;
+      color: #333;
+      text-align: center;
+    }
+    header {
+      background: #222;
+      color: #fff;
+      padding: 2rem 1rem;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    nav {
+      margin-top: 1rem;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    main {
+      padding: 2rem;
+    }
+    .card {
+      background: #fff;
+      max-width: 600px;
+      margin: 1rem auto;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    footer {
+      background: #222;
+      color: #ccc;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Alestore Games</h1>
+    <p>Indie Studio • Videogiochi con passione</p>
+    <nav>
+      <a href="#giochi">Giochi</a>
+      <a href="#chi-siamo">Chi siamo</a>
+      <a href="#contatti">Contatti</a>
+    </nav>
+  </header>
 
-  <head>
-    <title>Alestore ADS</title>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5893986295160301" crossorigin="anonymous">
-    </script>
-  </head>
+  <main>
+    <section id="giochi" class="card">
+      <h2>🎮 I nostri giochi</h2>
+      <p><strong>Dragonium Adventure</strong><br>
+      Un RPG a turni ambientato nel regno di Akinori.<br>
+      <a href="https://store.steampowered.com/app/dragonium_adventure" target="_blank">Disponibile su Steam</a></p>
+    </section>
 
-  <body>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5893986295160301" crossorigin="anonymous">
-    </script>
-    <!-- Asteroid Forward -->
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5893986295160301" data-ad-slot="4231133593" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-  </body>
+    <section id="chi-siamo" class="card">
+      <h2>👤 Chi siamo</h2>
+      <p>Siamo uno studio indipendente dedicato alla creazione di esperienze di gioco uniche, sviluppate con cura e passione.</p>
+    </section>
 
+    <section id="contatti" class="card">
+      <h2>📩 Contatti</h2>
+      <p>Email: <a href="mailto:alestoregames@gmail.com">alestoregames@gmail.com</a></p>
+      <p>GitHub: <a href="https://github.com/alestoregames" target="_blank">github.com/alestoregames</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Alestore Games. Tutti i diritti riservati.</p>
+  </footer>
+</body>
 </html>
