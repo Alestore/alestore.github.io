@@ -6,7 +6,7 @@
 
   class SaveSlots {
     constructor () {
-      this.slots = [{}, {}, {}];
+      this.slots = [{}, {}, {}, {}]; // 4 slot
       this._loadFromLocal();
     }
 
@@ -124,12 +124,15 @@
     save(args) {
       manager.save(args.N);
     }
+
     load(args) {
       manager.load(args.N);
     }
+
     toJSON(args) {
       return manager.toJSON(args.N);
     }
+
     fromJSON(args) {
       manager.fromJSON(args.N, args.J);
     }
