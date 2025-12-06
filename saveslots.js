@@ -2,7 +2,7 @@
   'use strict';
 
   const STORAGE_KEY = 'saveslots_storage';
-  const EXCLUDED = ["☁ open link", "☁ selected save slot"]; // variabili cloud da ignorare
+  const EXCLUDED = ["☁ open link", "☁ selected save slot", "☁ Was changing Save slots?"]; // ignore these cloud variables
 
   class SaveSlots {
     constructor () {
