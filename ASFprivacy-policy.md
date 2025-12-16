@@ -4,53 +4,58 @@ Alestore Inc. built the Asteroid Forward app as a Commercial app, available on S
 
 This page is used to inform visitors regarding our policies with the collection, use, and disclosure of Personal Information if anyone decided to use our Service.
 
-If you choose to use our Service, then you agree to the collection and use of information in relation to this policy. The Personal Information that we collect is used for providing and improving the Service. We will not use or share your information with anyone except as described in this Privacy Policy.
+**Acceptance of Terms**
 
-The terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, which are accessible at Asteroid Forward unless otherwise defined in this Privacy Policy.
+By downloading or using Asteroid Forward ("the App"), you agree to be bound by these Terms and Conditions. If you do not agree to the terms, do not use the App.
+
+**Platforms**
+
+The App is available through the Google Play Store and Steam. By accessing the App on these platforms, you also agree to comply with their respective terms and policies.
+
+**User Data**
+
+The App collects minimal personal data solely for functionality and legal compliance:
+
+* Date of birth – Used to verify age eligibility and comply with age restrictions.
 
 **Information Collection and Use**
 
-For a better experience, while using our Service, we may require you to provide us with certain personally identifiable information, including but not limited to username, password. The information that we request will be retained by us and used as described in this privacy policy.
+We collect only the email and the date of birth as described above. This data is securely stored and used only to provide and improve the Service. We do not sell, rent, or share personal data with third parties.
 
 **Log Data**
 
-We want to inform you that whenever you use our Service, in a case of an error in the app we collect data and information (through third-party products) on your phone called Log Data. This Log Data may include information such as your device Internet Protocol (“IP”) address, device name, operating system version, the configuration of the app when utilizing our Service, the time and date of your use of the Service, and other statistics.
+In the case of errors or crashes, we may collect anonymous diagnostic data to improve performance. This may include technical information such as your device type, OS version, and time of the error.
 
 **Cookies**
 
-Cookies are files with a small amount of data that are commonly used as anonymous unique identifiers. These are sent to your browser from the websites that you visit and are stored on your device's internal memory.
+The App does not use cookies directly. However, third-party services used by the App (such as platform SDKs) may use cookies to function properly.
 
-This Service does not use these “cookies” explicitly. However, the app may use third-party code and libraries that use “cookies” to collect information and improve their services. You have the option to either accept or refuse these cookies and know when a cookie is being sent to your device. If you choose to refuse our cookies, you may not be able to use some portions of this Service.
+**Third-Party Services**
 
-**Service Providers**
-
-We may employ third-party companies and individuals due to the following reasons:
-
-*   To facilitate our Service;
-*   To provide the Service on our behalf;
-*   To perform Service-related services; or
-*   To assist us in analyzing how our Service is used.
-
-We want to inform users of this Service that these third parties have access to their Personal Information. The reason is to perform the tasks assigned to them on our behalf. However, they are obligated not to disclose or use the information for any other purpose.
+We may employ trusted third-party services to help with functionality or analytics. These services may have access to personal data only to perform tasks on our behalf and are obligated not to disclose or misuse it.
 
 **Security**
 
-We value your trust in providing us your Personal Information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and we cannot guarantee its absolute security.
+We take reasonable precautions to protect your data, but no method of digital transmission or storage is 100% secure. Use the App at your own risk, and contact us if you believe your data has been compromised.
 
 **Links to Other Sites**
 
-This Service may contain links to other sites. If you click on a third-party link, you will be directed to that site. Note that these external sites are not operated by us. Therefore, we strongly advise you to review the Privacy Policy of these websites. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.
+The App may contain links to external websites. We are not responsible for their content or privacy practices, and we recommend reviewing their policies separately.
 
 **Children’s Privacy**
 
-We do not knowingly collect personally identifiable information from children. We encourage all children to never submit any personally identifiable information through the Application and/or Services. We encourage parents and legal guardians to monitor their children's Internet usage and to help enforce this Policy by instructing their children never to provide personally identifiable information through the Application and/or Services without their permission. If you have reason to believe that a child has provided personally identifiable information to us through the Application and/or Services, please contact us. You must also be at least 16 years of age to consent to the processing of your personally identifiable information in your country (in some countries we may allow your parent or guardian to do so on your behalf).
+The App is not intended for children under the age of 13. If we discover that a child under 13 has provided us with personal information, we will delete it immediately. Users must be at least 16 years old to consent to data processing (or have consent from a parent or guardian where required).
 
-**Changes to This Privacy Policy**
+**Changes to This Policy**
 
-We may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. We will notify you of any changes by posting the new Privacy Policy on this page.
+We may update these Terms and this Privacy Policy occasionally. Changes will be posted on this page with the updated effective date. Continued use of the App after updates indicates acceptance.
 
-This policy is effective as of 2025-12-16
+**Liability Disclaimer**
+
+The App is provided "as is" without warranties of any kind. Alestore Games shall not be liable for any damages resulting from the use or inability to use the App.
 
 **Contact Us**
 
-If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us at [alestoregames@gmail.com](mailto:alestoregames@gmail.com).
+If you have any questions or concerns about these Terms or our Privacy Policy, please contact us at [alestoregames@gmail.com](mailto:alestoregames@gmail.com).
+
+Last updated: 2025-12-16
