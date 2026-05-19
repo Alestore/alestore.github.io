@@ -5,10 +5,12 @@
     "☁ open link",
     "☁ selected save slot",
     "☁ Was changing Save slots?",
+
     "☁ slot_1_valid",
     "☁ slot_2_valid",
     "☁ slot_3_valid",
     "☁ slot_4_valid",
+
     "☁ slot_1_version",
     "☁ slot_2_version",
     "☁ slot_3_version",
@@ -86,7 +88,7 @@
             v.isCloud &&
             !EXCLUDED.includes(v.name) &&
             !CLOUD_SLOTS.includes(v.name) &&
-            data.hasOwnProperty(v.name)
+            Object.prototype.hasOwnProperty.call(data, v.name)
           ) {
             v.value = data[v.name];
           }
@@ -96,7 +98,12 @@
 
     save(slot) {
 
-      if (slot < 1 || slot > CLOUD_SLOTS.length) return;
+      slot = Number(slot);
+
+      if (slot < 1 || slot > CLOUD_SLOTS.length) {
+        console.warn("Slot non valido");
+        return;
+      }
 
       const slotVar = this.getCloudVar(CLOUD_SLOTS[slot - 1]);
       const validVar = this.getCloudVar(VALID_FLAGS[slot - 1]);
@@ -109,38 +116,63 @@
 
       try {
 
+        // invalida lo slot PRIMA
         validVar.value = 0;
 
+        // raccogli dati
         const data = this.collect();
 
-        const json = JSON.stringify({
+        // nuova versione
+        const newVersion =
+          parseInt(versionVar.value || "0", 10) + 1;
+
+        // payload completo
+        const payload = {
+          version: newVersion,
           timestamp: Date.now(),
           data: data
-        });
+        };
 
+        const json = JSON.stringify(payload);
+
+        // sanity check
+        JSON.parse(json);
+
+        // scrivi JSON
         slotVar.value = json;
 
-        versionVar.value =
-          (parseInt(versionVar.value || 0) + 1).toString();
+        // aggiorna versione
+        versionVar.value = String(newVersion);
 
-        setTimeout(() => {
-          validVar.value = 1;
-        }, 300);
+        // SOLO ORA valida
+        validVar.value = 1;
 
       } catch (e) {
-        console.error("Errore salvataggio", e);
+        console.error("Errore salvataggio:", e);
+
+        // se qualcosa va male
+        validVar.value = 0;
       }
     }
 
     load(slot) {
 
-      if (slot < 1 || slot > CLOUD_SLOTS.length) return;
+      slot = Number(slot);
+
+      if (slot < 1 || slot > CLOUD_SLOTS.length) {
+        console.warn("Slot non valido");
+        return;
+      }
 
       const slotVar = this.getCloudVar(CLOUD_SLOTS[slot - 1]);
       const validVar = this.getCloudVar(VALID_FLAGS[slot - 1]);
 
-      if (!slotVar || !validVar) return;
+      if (!slotVar || !validVar) {
+        console.warn("Variabili cloud mancanti");
+        return;
+      }
 
+      // NON caricare slot invalidi
       if (String(validVar.value) !== "1") {
         console.warn("Slot non valido");
         return;
@@ -148,54 +180,73 @@
 
       try {
 
-        const parsed = JSON.parse(slotVar.value || '{}');
+        const raw = slotVar.value || "{}";
 
-        if (!parsed.data) {
-          console.warn("Save non valido");
+        const parsed = JSON.parse(raw);
+
+        if (
+          !parsed ||
+          typeof parsed !== "object" ||
+          !parsed.data
+        ) {
+          console.warn("Save malformato");
           return;
         }
 
         this.apply(parsed.data);
 
       } catch (e) {
-        console.error("Errore caricamento", e);
+        console.error("Errore caricamento:", e);
       }
     }
 
     toJSON(slot) {
 
+      slot = Number(slot);
+
       if (slot < 1 || slot > CLOUD_SLOTS.length) {
-        return '{}';
+        return "{}";
       }
 
       const slotVar = this.getCloudVar(CLOUD_SLOTS[slot - 1]);
 
-      return slotVar ? slotVar.value || '{}' : '{}';
+      if (!slotVar) {
+        return "{}";
+      }
+
+      return slotVar.value || "{}";
     }
 
     fromJSON(slot, json) {
 
-      if (slot < 1 || slot > CLOUD_SLOTS.length) return;
+      slot = Number(slot);
+
+      if (slot < 1 || slot > CLOUD_SLOTS.length) {
+        return;
+      }
 
       const slotVar = this.getCloudVar(CLOUD_SLOTS[slot - 1]);
       const validVar = this.getCloudVar(VALID_FLAGS[slot - 1]);
 
-      if (!slotVar || !validVar) return;
+      if (!slotVar || !validVar) {
+        return;
+      }
 
       try {
 
+        // verifica JSON valido
         JSON.parse(json);
 
         validVar.value = 0;
 
         slotVar.value = json;
 
-        setTimeout(() => {
-          validVar.value = 1;
-        }, 300);
+        validVar.value = 1;
 
       } catch (e) {
-        console.error("JSON non valido", e);
+        console.error("JSON non valido:", e);
+
+        validVar.value = 0;
       }
     }
   }
@@ -208,7 +259,9 @@
       return {
         id: 'saveslots',
         name: 'Save Slots',
+
         blocks: [
+
           {
             opcode: 'save',
             blockType: Scratch.BlockType.COMMAND,
@@ -220,6 +273,7 @@
               }
             }
           },
+
           {
             opcode: 'load',
             blockType: Scratch.BlockType.COMMAND,
@@ -231,6 +285,7 @@
               }
             }
           },
+
           {
             opcode: 'toJSON',
             blockType: Scratch.BlockType.REPORTER,
@@ -242,6 +297,7 @@
               }
             }
           },
+
           {
             opcode: 'fromJSON',
             blockType: Scratch.BlockType.COMMAND,
@@ -251,6 +307,7 @@
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '{}'
               },
+
               N: {
                 type: Scratch.ArgumentType.NUMBER,
                 defaultValue: 1
