@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Per Sara ❤️</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: radial-gradient(
+        circle,
+        #42091d,
+        #15030a 70%
+    );
+
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* CUORE */
+
+#heart {
+    position: relative;
+
+    width: 110px;
+    height: 110px;
+
+    border: none;
+    background: #ff174f;
+
+    transform: rotate(-45deg);
+
+    cursor: pointer;
+
+    box-shadow: 0 0 30px #ff174f;
+
+    transition: transform 0.2s ease;
+}
+
+#heart::before,
+#heart::after {
+    content: "";
+
+    position: absolute;
+
+    width: 110px;
+    height: 110px;
+
+    background: #ff174f;
+
+    border-radius: 50%;
+}
+
+#heart::before {
+    top: -55px;
+    left: 0;
+}
+
+#heart::after {
+    top: 0;
+    left: 55px;
+}
+
+#heart span {
+    position: absolute;
+
+    z-index: 2;
+
+    width: 25px;
+    height: 45px;
+
+    background: rgba(255,255,255,0.35);
+
+    border-radius: 50%;
+
+    top: 12px;
+    left: 20px;
+}
+
+
+/* CONTATORE */
+
+#counter {
+    position: absolute;
+
+    top: 30px;
+
+    font-size: 16px;
+
+    opacity: 0.7;
+}
+
+
+/* MESSAGGIO FINALE */
+
+#message {
+    position: absolute;
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform: scale(0.5);
+
+    pointer-events: none;
+
+    transition:
+        all 1.2s cubic-bezier(.17,.89,.32,1.3);
+}
+
+#message.show {
+    opacity: 1;
+
+    transform: scale(1);
+}
+
+#message h1 {
+    margin: 0;
+
+    font-size: clamp(38px, 8vw, 75px);
+
+    color: #ff4f7d;
+
+    text-shadow:
+        0 0 20px #ff174f,
+        0 0 50px rgba(255,23,79,.7);
+}
+
+#message p {
+    margin-top: 20px;
+
+    font-size: clamp(22px, 4vw, 35px);
+}
+
+
+/* PARTICELLE DELL'ESPLOSIONE */
+
+.particle {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #ff174f;
+
+    animation:
+        explode 1.2s ease-out forwards;
+}
+
+@keyframes explode {
+
+    to {
+        transform:
+            translate(var(--x), var(--y))
+            scale(0);
+
+        opacity: 0;
+    }
+
+}
+
+
+/* PICCOLI CUORI */
+
+.floating-heart {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    font-size: 22px;
+
+    animation:
+        float 2s ease-out forwards;
+
+    pointer-events: none;
+}
+
+@keyframes float {
+
+    from {
+        opacity: 1;
+
+        transform:
+            translate(-50%, 0)
+            scale(.5);
+    }
+
+    to {
+        opacity: 0;
+
+        transform:
+            translate(
+                calc(-50% + var(--drift)),
+                -180px
+            )
+            scale(1.5);
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+    <div id="counter">
+        0 / 25
+    </div>
+
+
+    <button id="heart">
+
+        <span></span>
+
+    </button>
+
+
+    <div id="message">
+
+        <h1>
+            Ti amo tanto Sara ❤️
+        </h1>
+
+        <p>
+            dal tuo Ale
+        </p>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const heart =
+    document.getElementById("heart");
+
+const counter =
+    document.getElementById("counter");
+
+const message =
+    document.getElementById("message");
+
+
+/*
+    NUMERO DI CLICK NECESSARI
+    PER FAR ESPLODERE IL CUORE
+*/
+
+const MAX_CLICKS = 25;
+
+let clicks = 0;
+
+let exploded = false;
+
+
+/* CLICK SUL CUORE */
+
+heart.addEventListener("click", () => {
+
+    if (exploded) return;
+
+
+    clicks++;
+
+
+    counter.textContent =
+        clicks + " / " + MAX_CLICKS;
+
+
+    /*
+        Il cuore diventa
+        sempre più grande.
+    */
+
+    const scale =
+        1 + clicks * 0.16;
+
+    heart.style.transform =
+        `rotate(-45deg) scale(${scale})`;
+
+
+    /*
+        Piccolo cuore
+        che sale.
+    */
+
+    const floatingHeart =
+        document.createElement("div");
+
+    floatingHeart.className =
+        "floating-heart";
+
+    floatingHeart.textContent =
+        "❤️";
+
+
+    floatingHeart.style.setProperty(
+        "--drift",
+        `${(Math.random() - 0.5) * 150}px`
+    );
+
+
+    document
+        .querySelector(".container")
+        .appendChild(floatingHeart);
+
+
+    setTimeout(() => {
+
+        floatingHeart.remove();
+
+    }, 2000);
+
+
+    /*
+        ESPLOSIONE
+    */
+
+    if (clicks >= MAX_CLICKS) {
+
+        explode();
+
+    }
+
+});
+
+
+/* ESPLOSIONE DEL CUORE */
+
+function explode() {
+
+    exploded = true;
+
+
+    counter.style.opacity = "0";
+
+
+    /*
+        Crea le particelle
+        dell'esplosione.
+    */
+
+    for (let i = 0; i < 100; i++) {
+
+        const particle =
+            document.createElement("div");
+
+        particle.className =
+            "particle";
+
+
+        const angle =
+            Math.random() *
+            Math.PI *
+            2;
+
+
+        const distance =
+            100 +
+            Math.random() * 450;
+
+
+        const x =
+            Math.cos(angle) *
+            distance;
+
+
+        const y =
+            Math.sin(angle) *
+            distance;
+
+
+        particle.style.setProperty(
+            "--x",
+            `${x}px`
+        );
+
+
+        particle.style.setProperty(
+            "--y",
+            `${y}px`
+        );
+
+
+        const size =
+            4 +
+            Math.random() * 10;
+
+
+        particle.style.width =
+            `${size}px`;
+
+        particle.style.height =
+            `${size}px`;
+
+
+        document
+            .querySelector(".container")
+            .appendChild(particle);
+
+
+        setTimeout(() => {
+
+            particle.remove();
+
+        }, 1400);
+
+    }
+
+
+    /*
+        Ultimo enorme ingrandimento
+        prima dell'esplosione.
+    */
+
+    heart.animate(
+
+        [
+
+            {
+                transform:
+                    "rotate(-45deg) scale(5)",
+                opacity: 1
+            },
+
+            {
+                transform:
+                    "rotate(-45deg) scale(6)",
+                opacity: 1
+            },
+
+            {
+                transform:
+                    "rotate(-45deg) scale(0)",
+                opacity: 0
+            }
+
+        ],
+
+        {
+            duration: 500,
+
+            easing: "ease-out",
+
+            fill: "forwards"
+        }
+
+    );
+
+
+    /*
+        Dopo l'esplosione
+        appare la dedica.
+    */
+
+    setTimeout(() => {
+
+        heart.style.visibility =
+            "hidden";
+
+
+        message.classList.add(
+            "show"
+        );
+
+    }, 450);
+
+}
+
+</script>
+
+
+</body>
+
+</html>
